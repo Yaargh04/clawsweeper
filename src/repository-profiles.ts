@@ -30,48 +30,33 @@ const OPENCLAW_CLOSE_REASONS: readonly RepositoryCloseReason[] = [
   "stale_insufficient_info",
 ];
 
-export const DEFAULT_TARGET_REPO = "openclaw/openclaw";
+export const DEFAULT_TARGET_REPO = "Yaargh04/clawsweeper";
 
 export const REPOSITORY_PROFILES: readonly RepositoryProfile[] = [
   {
-    targetRepo: DEFAULT_TARGET_REPO,
-    slug: "openclaw-openclaw",
-    displayName: "OpenClaw",
-    checkoutDir: "openclaw",
-    docsUrl: "https://docs.openclaw.ai",
-    communityUrl: "https://clawhub.ai/",
-    promptNote:
-      "Use the OpenClaw source tree, docs, changelog, and current main branch. Close proposals may use the normal OpenClaw stale/duplicate/not-in-repo/implemented-on-main policy when evidence is strong.",
-    applyCloseRules: {
-      issue: OPENCLAW_CLOSE_REASONS,
-      pull_request: OPENCLAW_CLOSE_REASONS.filter((reason) => reason !== "stale_insufficient_info"),
-    },
-  },
-  {
-    targetRepo: "openclaw/clawhub",
-    slug: "openclaw-clawhub",
-    displayName: "ClawHub",
-    checkoutDir: "clawhub",
-    communityUrl: "https://clawhub.ai/",
-    promptNote:
-      "Use the ClawHub source tree and current main branch. Review every issue and PR with the same evidence standard, but only propose auto-close for pull requests that are certainly implemented on main. Keep everything else open.",
-    applyCloseRules: {
-      issue: [],
-      pull_request: ["implemented_on_main"],
-    },
-  },
-  {
-    targetRepo: "openclaw/clawsweeper",
-    slug: "openclaw-clawsweeper",
-    displayName: "ClawSweeper",
+    targetRepo: "Yaargh04/clawsweeper",
+    slug: "yaargh04-clawsweeper",
+    displayName: "ClawSweeper (Yaargh04)",
     checkoutDir: "clawsweeper",
     promptNote:
-      "Use the ClawSweeper source tree and current main branch. Review bot automation, workflow, and documentation changes conservatively. Only propose auto-close for pull requests that are certainly implemented on main; keep issues open for maintainer triage.",
+      "Self-review of the ClawSweeper fork. Review bot automation, workflow, and documentation changes conservatively. Only propose auto-close for pull requests that are certainly implemented on main; keep issues open for maintainer triage.",
     applyCloseRules: {
       issue: [],
       pull_request: ["implemented_on_main"],
     },
   },
+  // Add website repos below as you build them, e.g.:
+  // {
+  //   targetRepo: "Yaargh04/my-website",
+  //   slug: "yaargh04-my-website",
+  //   displayName: "My Website",
+  //   checkoutDir: "my-website",
+  //   promptNote: "Review issues and PRs for a Next.js website. Keep issues open unless clearly implemented. Auto-close PRs that are confirmed merged on main.",
+  //   applyCloseRules: {
+  //     issue: ["duplicate_or_superseded", "incoherent", "stale_insufficient_info"],
+  //     pull_request: ["implemented_on_main", "duplicate_or_superseded"],
+  //   },
+  // },
 ];
 
 export function repositoryProfileFor(targetRepo: string): RepositoryProfile {
